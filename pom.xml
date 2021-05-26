@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.greghaines</groupId>
+    <groupId>com.github.nipun</groupId>
     <artifactId>jesque</artifactId>
-    <version>2.1.4-SNAPSHOT</version>
+    <version>2.1.4-internal</version>
     <packaging>jar</packaging>
     <name>Jesque</name>
     <description>An implementation of Resque in Java</description>
@@ -26,29 +26,16 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <scm>
-        <connection>scm:git:git@github.com:gresrun/jesque.git</connection>
-        <developerConnection>scm:git:git@github.com:gresrun/jesque.git</developerConnection>
-        <url>git@github.com:gresrun/jesque.git</url>
-        <tag>HEAD</tag>
-    </scm>
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/gresrun/jesque/issues</url>
-    </issueManagement>
-    <ciManagement>
-        <system>Travis</system>
-        <url>https://travis-ci.org/gresrun/jesque</url>
-        <notifiers/>
-    </ciManagement>
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>nexus</id>
+            <name>Snapshot</name>
+            <url>https://nexuscentral.runwayci.com/repository/maven-snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>nexus</id>
+            <name>Releases</name>
+            <url>https://nexuscentral.runwayci.com/repository/maven-releases/</url>
         </repository>
         <site>
             <id>github-pages-site</id>
@@ -56,51 +43,6 @@
             <url>site/${project.version}</url>
         </site>
     </distributionManagement>
-    <developers>
-        <developer>
-            <id>gresrun</id>
-            <name>Greg Haines</name>
-            <email>gresrun@gmail.com</email>
-            <url>http://greghaines.net/</url>
-            <timezone>America/Los_Angeles</timezone>
-        </developer>
-    </developers>
-    <contributors>
-        <contributor>
-            <name>Michael Cameron</name>
-            <url>https://github.com/michaelcameron</url>
-        </contributor>
-        <contributor>
-            <name>Timothy Hruska</name>
-            <url>https://github.com/tjhruska</url>
-        </contributor>
-        <contributor>
-            <name>Animesh Kumar</name>
-            <email>smile.animesh@gmail.com</email>
-            <url>http://animesh.org/</url>
-            <timezone>Asia/Kolkata</timezone>
-        </contributor>
-        <contributor>
-            <name>Christian Oestreich</name>
-            <url>https://github.com/ctoestreich</url>
-        </contributor>
-        <contributor>
-            <name>David Parkinson</name>
-            <url>https://github.com/dparkinson</url>
-        </contributor>
-        <contributor>
-            <name>Gregory Jansen</name>
-            <email>count0@email.unc.edu</email>
-            <url>http://www.meekmok.com/janglejack</url>
-            <timezone>America/New_York</timezone>
-        </contributor>
-        <contributor>
-            <name>Daniël de Kok</name>
-            <email>me@danieldk.eu</email>
-            <url>http://danieldk.eu/</url>
-            <timezone>Europe/Zurich</timezone>
-        </contributor>
-    </contributors>
     <profiles>
         <profile>
             <id>travis</id>
@@ -257,8 +199,8 @@
                 <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <serverId>nexus</serverId>
+                    <nexusUrl>https://nexuscentral.runwayci.com/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
