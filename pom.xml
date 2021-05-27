@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.nipun</groupId>
+    <groupId>com.github.nipun-gupta-e3183</groupId>
     <artifactId>jesque</artifactId>
     <version>2.1.4-internal</version>
     <packaging>jar</packaging>
@@ -26,23 +26,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus</id>
-            <name>Snapshot</name>
-            <url>https://nexuscentral.runwayci.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus</id>
-            <name>Releases</name>
-            <url>https://nexuscentral.runwayci.com/repository/maven-releases/</url>
-        </repository>
-        <site>
-            <id>github-pages-site</id>
-            <name>Deployment through GitHub's site deployment plugin</name>
-            <url>site/${project.version}</url>
-        </site>
-    </distributionManagement>
     <profiles>
         <profile>
             <id>travis</id>
@@ -175,34 +158,8 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <configuration>
-                    <message>Creating site for ${project.artifactId}, ${project.version}</message>
-                    <path>${project.distributionManagement.site.url}</path>
-                    <merge>true</merge>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>github-site</id>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>site-deploy</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>nexus</serverId>
-                    <nexusUrl>https://nexuscentral.runwayci.com/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8</version>
             </plugin>
         </plugins>
     </build>
